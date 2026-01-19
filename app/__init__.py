@@ -4,6 +4,7 @@ from .config import config_map
 from .extensions import db, migrate, cors, bcrypt, jwt
 from .cli import register_cli
 from flasgger import Swagger
+from app.rate_limiter import rate_limit
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -25,6 +26,14 @@ def create_app():
     jwt.init_app(app)
     register_cli(app)
     Swagger(app)
+
+     # ✅ ADD RATE LIMITER HERE
+    @app.before_request
+    def before_request():
+        # Prevent abuse and protect backend resources
+        limited = rate_limit()
+        if limited:
+            return limited
 
     from .auth.routes import auth_bp
     from .budget.routes import budget_bp

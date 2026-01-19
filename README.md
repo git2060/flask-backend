@@ -58,6 +58,12 @@ scalability in mind:
 To keep the project focused, advanced features such as distributed caching,
 message queues, and observability tooling are not implemented here.
 
+## Production Enhancements
+- Redis-backed rate limiting to protect APIs from abuse
+- Environment-driven configuration for limits and Redis connection
+- Graceful fallback when Redis is unavailable
+
+
 ## Future Improvements
 Given more time, the following enhancements would be added:
 - Redis-based caching for read-heavy endpoints
