@@ -9,8 +9,7 @@ budget_bp = Blueprint("budget", __name__)
 budget_schema = BudgetSchema()
 budget_response_schema = BudgetResponseSchema()
 
-
-
+## Validate input early to avoid bad data reaching the database
 
 @budget_bp.route("/sync", methods=["POST"])
 @jwt_required()
