@@ -3,6 +3,8 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 from ..extensions import db, bcrypt
 from ..models import User
 
+## Authentication check to protect sensitive endpoints
+
 auth_bp = Blueprint("auth", __name__)
 
 @auth_bp.route("/test")
